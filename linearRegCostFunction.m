@@ -25,6 +25,10 @@ J = 1 / (2 * m) * sum((X * theta - y).^2);
 % Add regularization
 J = J + lambda / (2 * m) * dot(theta(2:end), theta(2:end));
 
+% Compute the gradient of the cost function
+grad(1) = 1 / m * X(:,1)' * (X * theta - y);
+grad(2:end) = (1 / m * X(:,2:end)' * (X * theta - y)) + lambda / m * theta(2:end);
+
 % =========================================================================
 
 grad = grad(:);
